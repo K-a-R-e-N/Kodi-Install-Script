@@ -70,6 +70,9 @@ echo "deb-src https://deb.nodesource.com/$NODE_VERSION $DISTRO main" | sudo tee 
 echo "    - Обновление списка пакетов и установка Node.js..."
 sudo apt-get update > /dev/null && sudo apt-get install -y nodejs > /dev/null
 
+echo -en "\n" ; echo "# # Обновление списка пакетов..."
+sudo apt-get update > /dev/null
+
 echo -en "\n" ; echo "# # Установка пакетов gcc g++ make python..."
 sudo apt-get install -y gcc g++ make python > /dev/null
 
