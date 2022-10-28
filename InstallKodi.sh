@@ -18,7 +18,7 @@ function GoToMenu {
   GoToMenuInfo="Чтобы продолжить, введите"
 while :
 	do
-	clear ; CheckBackUp=0 ; BackupRecovery=0
+	clear
 	ZI=Установка && Zagolovok 
 	echo -en "\n"
 	echo "     ┌─ Выберите действие: ──────────────────────────────────────────────┐"
@@ -100,7 +100,7 @@ fi
 
 
 function InstallScript() {
-clear
+clear ; CheckBackUp=0 ; BackupRecovery=0
 ZI="Установка" && Zagolovok
 СheckingInstalledPackage
 BackUpScript
@@ -277,7 +277,7 @@ GoToMenu
 
 
 function UninstallScript() {
-clear
+clear ; CheckBackUp=0 ; BackupRecovery=0
 ZI=" Удаление" && Zagolovok
 
 echo -en "\n" ; echo "  # # Остановка и завершение процесса Kodi..."
