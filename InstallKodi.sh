@@ -291,7 +291,6 @@ BackUpScript
 
 echo -en "\n" ; echo "  # # Деинсталляция Kodi..."
 sudo apt remove kodi -y > /dev/null 2>&1
-sudo apt purge kodi -y > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Деинсталляция всех плагинов и конфигурацию Kodi..."
 sudo apt purge kodi -y > /dev/null 2>&1
@@ -304,8 +303,6 @@ sudo rm -rf /etc/systemd/system/multi-user.target.wants/kodi*
 sudo systemctl --system daemon-reload > /dev/null
 
 echo -en "\n" ; echo "  # # Удаление хвостов, для возможности последующей нормальной установки..."
-sudo curl -sfL https://gist.githubusercontent.com/oznu/312b54364616082c3c1e0b6b02351f0e/raw/remove-node.sh | sudo bash > /dev/null 2>&1
-sudo rm -rf /usr/lib/node_modules/kodi*
 sudo rm -rf /usr/bin/kodi*
 sudo rm -rf /etc/default/kodi*
 sudo rm -rf /var/lib/kodi*
