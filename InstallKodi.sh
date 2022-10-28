@@ -101,7 +101,7 @@ fi
 
 function InstallScript() {
 clear
-Zagolovok
+ZI="Установка" && Zagolovok
 СheckingInstalledPackage
 BackUpScript
 
