@@ -123,22 +123,21 @@ echo -en "\n" ; echo "  # # Установка Kodi..."
 sudo apt install -y kodi kodi-eventclients-kodi-send > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Установка плагина IPTV Simple PVR..."
-sudo apt install -y kodi-pvr-iptvsimple
+sudo apt install -y kodi-pvr-iptvsimple > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Поддержка сжатых файлов Kodi-vfs-nfs..."
-sudo apt install -y kodi-vfs-libarchive 
+sudo apt install -y kodi-vfs-libarchive > /dev/null 2>&1
 
-#echo -en "\n" ; echo "  # # Установка других плагинов при..."
-#sudo apt install -y kodi-peripheral-joystick kodi-inputstream-adaptive kodi-inputstream-rtmp
-
+#echo -en "\n" ; echo "  # # Установка других плагинов..."
+#sudo apt install -y kodi-peripheral-joystick kodi-inputstream-adaptive kodi-inputstream-rtmp > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Настройка плагина pvr.iptvsimple..."
 #Проверка и создание необходимых каталогов c применение прав доступа
-[ ! -d /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple ] && sudo mkdir -v -m755 /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple && sudo chown -v pi:pi /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple
+[ ! -d /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple ] && sudo mkdir -v -m755 /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple > /dev/null 2>&1 && sudo chown -v pi:pi /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple > /dev/null 2>&1
 #Удаление ранее созданных настроек
-sudo rm -rf /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml*
+sudo rm -rf /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml* > /dev/null 2>&1
 #Создание готового файла настроек для плагина pvr.iptvsimple и применение необходимых прав
-sudo tee -a /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml <<_EOF_
+sudo tee -a /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml > /dev/null 2>&1 <<_EOF_
 <settings version="2">
     <setting id="epgCache">true</setting>
     <setting id="epgPath" default="true"></setting>
@@ -157,17 +156,17 @@ sudo tee -a /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml <<_EO
     <setting id="startNum">1</setting>
 </settings>
 _EOF_
-sudo chown -v pi:pi /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml
-sudo chmod 755 /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml
+sudo chown -v pi:pi /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml > /dev/null 2>&1
+sudo chmod 755 /home/pi/.kodi/userdata/addon_data/pvr.iptvsimple/settings.xml > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Предварительная настройка Kodi..."
 #Проверка и создание необходимых каталогов c применение прав доступа
-[ ! -d /usr/share/kodi ] && sudo mkdir -v -m755 /usr/share/kodi && sudo chown -v root:root /usr/share/kodi
-[ ! -d /usr/share/kodi/system ] && sudo mkdir -v -m755 /usr/share/kodi/system && sudo chown -v root:root /usr/share/kodi/system
+[ ! -d /usr/share/kodi ] && sudo mkdir -v -m755 /usr/share/kodi > /dev/null 2>&1 && sudo chown -v root:root /usr/share/kodi > /dev/null 2>&1
+[ ! -d /usr/share/kodi/system ] && sudo mkdir -v -m755 /usr/share/kodi/system > /dev/null 2>&1 && sudo chown -v root:root /usr/share/kodi/system > /dev/null 2>&1
 #Удаление ранее созданных настроек
-sudo rm -rf /usr/share/kodi/system/advancedsettings.xml*
+sudo rm -rf /usr/share/kodi/system/advancedsettings.xml* > /dev/null 2>&1
 #Создание готового файла настроек для Kodi и применение необходимых прав
-sudo tee -a /usr/share/kodi/system/advancedsettings.xml <<_EOF_
+sudo tee -a /usr/share/kodi/system/advancedsettings.xml > /dev/null 2>&1 <<_EOF_
 <?xml version="1.0" encoding="UTF-8"?>
 <advancedsettings>
   <cache> 
@@ -179,11 +178,11 @@ sudo tee -a /usr/share/kodi/system/advancedsettings.xml <<_EOF_
   <gputempcommand>/opt/vc/bin/vcgencmd measure_temp | sed -e "s/temp=//" -e "s/\..*'/ /"</gputempcommand>
 </advancedsettings>
 _EOF_
-sudo chown -v root:root /usr/share/kodi/system/advancedsettings.xml
-sudo chmod 644 /usr/share/kodi/system/advancedsettings.xml
+sudo chown -v root:root /usr/share/kodi/system/advancedsettings.xml > /dev/null 2>&1
+sudo chmod 644 /usr/share/kodi/system/advancedsettings.xml > /dev/null 2>&1
 
 echo -en "\n" ; echo "  # # Создание службы для автозапуска Kodi"
-sudo rm -rf /etc/systemd/system/kodi.service
+sudo rm -rf /etc/systemd/system/kodi.service > /dev/null 2>&1
 sudo tee -a /etc/systemd/system/kodi.service > /dev/null <<_EOF_
 [Unit]
 Description = Kodi Media Center
@@ -219,8 +218,8 @@ fi
 
 echo -en "\n" ; echo "  # # Создание автозагрузки и запуск служб..."
 sudo systemctl -q daemon-reload
-sudo systemctl enable kodi.service
-sudo systemctl start kodi.service
+sudo systemctl enable kodi.service > /dev/null 2>&1
+sudo systemctl start kodi.service > /dev/null 2>&1
 
 
 echo -en "\n"
