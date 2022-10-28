@@ -278,7 +278,7 @@ GoToMenu
 
 function UninstallScript() {
 clear
-ZI= Удаление && Zagolovok
+ZI=" Удаление" && Zagolovok
 
 echo -en "\n" ; echo "  # # Остановка и завершение процесса Kodi..."
 sudo kodi-send --action=Quit > /dev/null 2>&1
